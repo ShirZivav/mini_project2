@@ -19,7 +19,9 @@ ecog_data = pd.read_csv(r"C:\Users\Shir Zivav\Documents\PythonVSC\mini_project_2
 
 def calc_mean_erp(trial_points,ecog_data):
     '''This function gets as input 2 variables - the 2 csv files.
-    for the file - events_file_ordered => the function will ensure that all the variables are of type int.'''
+    for the file - events_file_ordered => the function will ensure that all the variables are of type int.
+    the function will return a matrix in the size of 5x1201 of the mean ERP for each finger.
+    the function will also plot the average brain response for each finger'''
     
     # now i used the function- astype - in order to convert all the values in the csv file - events_file_ordered - to int
     trial_points = trial_points.astype(int) 
@@ -59,7 +61,7 @@ def calc_mean_erp(trial_points,ecog_data):
     
     plt.figure(figsize = (10,6))
     for finger in range(1,6):
-        plt.plot(fingers_erp_matrix[finger - 1], label=f'Finger {finger}')
+        plt.plot(fingers_erp_matrix[finger - 1], label=f'Finger {finger}') # ploting the mean erp from the matrix to the correxponding finger
     
     plt.title('Mean ERP for each finger')
     plt.xlabel('Time (ms)')
@@ -71,5 +73,5 @@ def calc_mean_erp(trial_points,ecog_data):
     return fingers_erp_matrix
 
 
-fingers_erp_mean = calc_mean_erp(trial_points, ecog_data) 
-print(fingers_erp_mean)
+fingers_erp_mean = calc_mean_erp(trial_points, ecog_data) #calling to the function
+print(fingers_erp_mean) # printing the matrix
